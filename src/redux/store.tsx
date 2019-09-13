@@ -1,5 +1,5 @@
 import { Store, createStore, applyMiddleware } from "redux";
-import rootReducer from './rootReduser';
+import rootReducer from './rootReducer';
 import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { all } from "redux-saga/effects";
@@ -9,7 +9,7 @@ import { doHeader } from "./header/sagasHeader";
 import { doAdminBooks } from './admin/adminBooks/sagasAdminBooks'; 
 import {saveImage} from './profile/sagasProfile';
 import {doAdmin} from './admin/sagaAdmin';
-import {doUser} from './user/sagaUser';
+import {doUser} from './user/sagasUser';
 
 
 export default function configStore(initialState?:any):any{
@@ -24,8 +24,8 @@ export default function configStore(initialState?:any):any{
 
   let m = module as any;
   if (m.hot) {
-    m.hot.accept("./rootReduser", () => {
-      const nextRootReducer = require("./rootReduser").default;
+    m.hot.accept('./rootReducer', () => {
+      const nextRootReducer = require('./rootReducer').default;
       store.replaceReducer(nextRootReducer);
     });
   }

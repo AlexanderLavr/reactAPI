@@ -22,7 +22,7 @@ import { connect } from 'react-redux';
 import '../../../style/tableBooks.css';
 import AdminModalBooks from '../../../actionsComponents/actAdminModalBooks'; 
 import imageEdit from '../../../images/editButton.svg'; 
-import { AdminBooksProc } from '../../../redux/admin/adminBooks/actions';
+import { openModaladdBooks, setDeleteArrayBook, deleteBook, getEditBook } from '../../../redux/admin/adminBooks/actions';
 
 interface Data {
   title: string;
@@ -420,18 +420,5 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(
     mapStateToProps,
-    dispatch=>({
-        openModaladdBooks: ()=>{
-          dispatch({type: AdminBooksProc.OPEN_MODAL_ADD_BOOKS})
-        },
-        setDeleteArrayBook: (arrayBooks:any[])=>{
-          dispatch({type: AdminBooksProc.CHECK_DELET_BOOKS, arrayBooks})
-        },
-        deleteBook: (deleteArrayBooks:any[])=>{
-          dispatch({type: AdminBooksProc.DO_DELETE_BOOKS, deleteArrayBooks})
-        },
-        getEditBook: (id:string)=>{
-          dispatch({type: AdminBooksProc.DO_EDIT_BOOK, id})
-        }
-    })
+    { openModaladdBooks, setDeleteArrayBook, deleteBook, getEditBook }
 )(EnhancedTable); 

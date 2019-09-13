@@ -15,7 +15,7 @@ export const initialState: any = {
     
   };
   
-  export function adminBooksReduser(state:any = initialState, action:any){
+  export function adminBooksReducer(state:any = initialState, action:any){
       switch (action.type){
         case AdminBooksProc.APDATE_ARRAY_BOOKS:
             return {

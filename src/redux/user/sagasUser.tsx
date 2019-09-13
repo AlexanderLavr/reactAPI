@@ -1,7 +1,7 @@
 import { put, takeEvery, call, all, race, delay} from 'redux-saga/effects';
 import { getMatch, matchIs, countTotalBooks } from '../../actionsComponents/actUserHome';
 import { UserProc } from './actions';
-import { request } from './request';
+import { request } from '../../help/request';
 
 export function* doUser():IterableIterator<any>{
     yield takeEvery(UserProc.DO_USER, function*(){//start array books
@@ -21,7 +21,7 @@ export function* doUser():IterableIterator<any>{
         if(choosedBook.success){
             let selectBook = choosedBook.data; 
             yield put({type: UserProc.CHOOSED_BOOK, selectBook})
-        }else{}
+        }
     })
 
     yield takeEvery(UserProc.ADD_BOOK, function*(id:any){//add books to cart in page USER

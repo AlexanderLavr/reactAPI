@@ -1,4 +1,4 @@
-import { AdminProc } from './actions';
+import { AdminProc } from './actionsAdmin';
 
 
 export const initialState: any = {
@@ -7,7 +7,7 @@ export const initialState: any = {
   openAdminModal: false
 };
 
-export function adminReduser(state:any = initialState, action:any){
+export function adminReducer(state:any = initialState, action:any){
     switch (action.type){
 
       case AdminProc.ADMIN_ARRAY:

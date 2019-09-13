@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { AdminModal } from '../components/admin/adminUsers/modalUsers';
-import { AdminProc } from '../redux/admin/actions';
+import { closeModal, saveEditUser } from '../redux/admin/actionsAdmin';
 
 const mapStateToProps = (state: any) => ({
     serverArray: state.admin.serverArray,
@@ -10,12 +10,5 @@ const mapStateToProps = (state: any) => ({
   
   export default connect(
     mapStateToProps,
-    dispatch=>({
-        closeModal: ()=>{
-            dispatch({type: AdminProc.CLOSE_MODAL})
-        },
-        saveEditUser: (data:any)=>{
-          dispatch({type: AdminProc.DO_SAVE_EDIT_USER, data})
-        }
-    })
+    { closeModal, saveEditUser }
   )(AdminModal);

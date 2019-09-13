@@ -1,23 +1,30 @@
 import { put, takeEvery, call} from "redux-saga/effects";
-import { request } from './request';
-import { LoginProc, loginObj } from '../../redux/login/actions';
+import { request } from '../../help/request';
+import { LoginProc } from '../../redux/login/actions';
 import jwtDecode from "jwt-decode";
     
-
+export interface loginObj{
+    email: string,
+    password: string
+}
 
 export function* doLogin(): IterableIterator<any>{
     yield takeEvery(LoginProc.DO_LOGIN, function*(obj:any){
 
         let loginObj:loginObj = obj.obj;
-        let response = yield call(request, "POST", loginObj)
+        let response = yield call(request, 'http://localhost:3000/v1/authenticate', 'POST', loginObj)
    
         if(response.success === false && response.errorValid === true){
             let errorObj = response.data;
             yield put({type: LoginProc.ERROR_VALIDE, errorObj})
-        }else if(response.success === false){
+        }
+
+        if(response.success === false){
             let error = response.message;
             yield put({type: LoginProc.LOGIN_ERROR, error})
-        }else if(response.success === true){
+        }
+
+        if(response.success === true){
             let token:string = response.data;
             let decoded:any = jwtDecode(token)//server OBJ
             //-----------------------------//work with local

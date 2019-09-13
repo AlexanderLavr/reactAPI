@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Login } from '../components/login';
-import { LoginProc } from '../redux/login/actions';
+import { doLogin } from '../redux/login/actions';
 
  
 const mapStateToProps = (state: any) => ({
@@ -20,9 +20,5 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(
     mapStateToProps,
-    dispatch=>({
-        doLogin: (currentObj:{}, history:{})=>{
-            dispatch({type: LoginProc.DO_LOGIN, obj: currentObj, history})
-        }
-    })
+    { doLogin }
 )(Login);

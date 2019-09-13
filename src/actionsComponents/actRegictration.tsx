@@ -1,6 +1,6 @@
 import { RegistrationComponent } from '../components/regestration';
 import { connect } from 'react-redux';
-import { RPr } from '../redux/regestration/actions';
+import { doRegister } from '../redux/regestration/actions';
 
 
 export const mapStateToProps = (state: any):{}=> ({
@@ -18,9 +18,5 @@ export const mapStateToProps = (state: any):{}=> ({
 
 export default connect(
     mapStateToProps,
-    dispatch=>({
-        doRegister: (currentObj:{}, history:{})=>{
-            dispatch({type: RPr.DO_REGISTER, obj: currentObj, history})
-        }
-    })
+    { doRegister }
 )(RegistrationComponent);

@@ -12,7 +12,7 @@ export const initialState:UserState = {
   selectBook:{}
 };
 
-export function userReduser(state = initialState, action:any){
+export function userReducer(state = initialState, action:any){
   switch (action.type){
     case UserProc.ARRAY_BOOKS:
       return {

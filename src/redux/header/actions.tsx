@@ -5,3 +5,15 @@ export enum HeaderProc{
     SAVE_PHOTO = 'SAVE_PHOTO',
     LOG_OUT = 'LOG_OUT'
 }
+
+export function logOut(){
+    return {type: HeaderProc.LOG_OUT};
+}
+
+export function localStoreUser(obj:any){
+    return {type: HeaderProc.DO_HEADER, obj};
+}
+
+export function saveImgProfile(saveImg:{}){
+    return {type: HeaderProc.DO_SAVE_PHOTO, saveImg};
+}

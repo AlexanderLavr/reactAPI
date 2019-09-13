@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { HeaderNav } from '../components/header';
-import { HeaderProc } from '../redux/header/actions';
+import { logOut, localStoreUser } from '../redux/header/actions';
 
 const mapStateToProps = (state: any):{} => ({
     loginSuc: state.login.loginSuccess,
@@ -11,15 +11,7 @@ const mapStateToProps = (state: any):{} => ({
     countBook: state.userBooks.countBook
 });
 
-
 export default connect(
     mapStateToProps,
-    dispatch=>({
-        logOut: ()=>{
-            dispatch({type: HeaderProc.LOG_OUT})
-        },
-        localStoreUser: (obj:any)=>{
-            dispatch({type: HeaderProc.DO_HEADER, obj})
-        }
-    })
+    { logOut, localStoreUser}
 )(HeaderNav);

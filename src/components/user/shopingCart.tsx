@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getState, countTotalPrice, buttonDelete, buttonAdd, buttonMult, countTotalBooks } from '../../actionsComponents/actUserHome';
-import { UserProc } from '../../redux/user/actions';
+import { countBooks } from '../../redux/user/actions';
 
 interface stateShopingCart{
     selectBooksArr: []
@@ -78,9 +78,5 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(
     mapStateToProps,
-    dispatch=>({
-        countBooks: (countBooksInCart:number)=>{
-            dispatch({type: UserProc.START_ADD_BOOK_TO_CART, countBooksInCart})
-        }
-    })
+    { countBooks }
 )(shopingCart);

@@ -9,11 +9,11 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { UserProc } from '../../redux/user/actions';
+import { selBook, addBooks } from '../../redux/user/actions';
 
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles({ 
     card: {
         maxWidth: 345,
     },
@@ -74,12 +74,5 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(
     mapStateToProps,
-    dispatch=>({
-        selBook: (id:string)=>{
-            dispatch({type: UserProc.SELECT_BOOK, id})
-        },
-        addBooks: (id:string)=>{
-            dispatch({type: UserProc.ADD_BOOK, id})
-        }
-    })
+    { selBook, addBooks }
 )(MediaCard);

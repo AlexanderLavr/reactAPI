@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { UserHome } from '../components/user/userHome';
-import { UserProc } from '../redux/user/actions';
+import { queryServer } from '../redux/user/actions';
 
 
 
@@ -93,9 +93,5 @@ const mapStateToProps = (state: any):{} => ({
 });
 export default connect(
     mapStateToProps,
-    dispatch=>({
-        queryServer: ()=>{
-            dispatch({type: UserProc.DO_USER})
-        }
-    })
+    { queryServer }
 )(UserHome);

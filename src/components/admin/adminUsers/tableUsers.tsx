@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
-import { AdminProc } from '../../../redux/admin/actions';
+import { deleteUser, editUser } from '../../../redux/admin/actionsAdmin';
 
 
 import AdminModal from '../../../actionsComponents/actAdminModalUsers';
@@ -102,12 +102,5 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(
     mapStateToProps,
-    dispatch=>({
-        deleteUser: (id:string)=>{
-            dispatch({type: AdminProc.DO_DELETE_USER, id})
-        }, 
-        editUser: (id:string)=>{
-          dispatch({type: AdminProc.DO_EDIT_USER, id})
-        }
-    })
+    { deleteUser, editUser }
 )(SimpleTable);

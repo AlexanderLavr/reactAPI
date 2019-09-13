@@ -1,6 +1,17 @@
-import { LoginProc, loginInitialState} from '../../redux//login/actions';
-import { HeaderProc }from '../../redux/header/actions';
+import { LoginProc } from './actions';
+import { HeaderProc }from '../header/actions';
 
+interface loginInitialState{
+  loginEmail: string,
+  logErrorEmail: string,
+  logErrorPassword: string,
+  loginError: string,
+  imageProfile: string,
+  loginSuccess: boolean,
+  doLogin: boolean,
+  userIsAdmin: boolean,
+  idUser: number
+}
 
 const initialState:loginInitialState = {
   doLogin: false,
@@ -14,7 +25,7 @@ const initialState:loginInitialState = {
   userIsAdmin: false
 };
 
-export function loginReduser(state:loginInitialState = initialState, action:any){
+export function loginReducer(state:loginInitialState = initialState, action:any){
     switch (action.type){
       case LoginProc.DO_LOGIN:
         return {

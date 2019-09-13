@@ -1,5 +1,5 @@
 import { put, takeEvery, call} from "redux-saga/effects";
-import { request } from './request';
+import { request } from '../../help/request';
 import { HeaderProc } from '../header/actions';
 
 export function* saveImage(): IterableIterator<any>{
@@ -7,7 +7,7 @@ export function* saveImage(): IterableIterator<any>{
         let idUser:string = saveImg.saveImg.id;
         let imageProfile:any = saveImg.saveImg;
    
-        let response = yield call(request, 'PUT', imageProfile, idUser)
+        let response = yield call(request, `http://localhost:3000/v1/users/changeProfile/${idUser}`, 'PUT', imageProfile)
         if(response.success){
             let saveImg:string = response.data.imageProfile
             yield put({type: HeaderProc.SAVE_PHOTO, saveImg})

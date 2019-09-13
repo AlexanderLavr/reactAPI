@@ -7,19 +7,6 @@ export enum LoginProc{
     LOGIN_ERROR = 'LOGIN_ERROR',
 }
 
-export interface loginInitialState{
-    loginEmail: string,
-    logErrorEmail: string,
-    logErrorPassword: string,
-    loginError: string,
-    imageProfile: string,
-    loginSuccess: boolean,
-    doLogin: boolean,
-    userIsAdmin: boolean,
-    idUser: number
-}
-
-export interface loginObj{
-    email: string,
-    password: string
+export function doLogin(currentObj:{}, history:{}){
+    return {type: LoginProc.DO_LOGIN, obj: currentObj, history};
 }

@@ -1,5 +1,21 @@
-import { RegistrationinitialState, RPr } from './actions';
+import { RPr } from './actions';
 import { HeaderProc } from '../header/actions';
+
+interface RegistrationinitialState{
+  firstname: string,
+  secondname: string,
+  email: string,
+  password: string,
+  errorFirstname: string,
+  errorSecondname: string,
+  errorEmail: string,
+  errorPassword: string,
+  error: string,
+  imageProfile: string,
+  startRegister: boolean,
+  userExist: boolean,
+  successRegister: boolean
+}
 
 export const initialState:RegistrationinitialState = {
   firstname: '',
@@ -21,7 +37,7 @@ export const initialState:RegistrationinitialState = {
 
 
 
-export function regestrationReduser(state:RegistrationinitialState = initialState, action:any){
+export function regestrationReducer(state:RegistrationinitialState = initialState, action:any){
   switch (action.type){
      case RPr.DO_REGISTER:
         return {

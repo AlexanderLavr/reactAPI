@@ -1,6 +1,6 @@
-import { put, takeEvery, call, all, race, delay} from "redux-saga/effects";
-import { request, requestID } from './request';
-import { AdminProc } from './actions';
+import { put, takeEvery, call} from 'redux-saga/effects';
+import { request } from '../../help/request';
+import { AdminProc } from './actionsAdmin';
 import { AdminBooksProc } from '../../redux/admin/adminBooks/actions';
     
 
@@ -36,7 +36,7 @@ export function* doAdmin(): IterableIterator<any>{
 
     yield takeEvery(AdminProc.DO_EDIT_USER, function*(id:any){//edit user
         let editUserId:any = id.id;
-        let response = yield call(requestID, 'GET', editUserId) 
+        let response = yield call(request, `http://localhost:3000/v1/users/getAdminUser/${editUserId}`, 'GET') 
         if(response.success){
             let data = response.data;
             yield put({type: AdminProc.EDIT_USER_SERVER,  data})

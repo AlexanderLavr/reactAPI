@@ -1,6 +1,6 @@
 import { AdminHome } from '../components/admin/adminHome';
 import { connect } from 'react-redux';
-import { AdminProc } from '../redux/admin/actions';
+import { queryServer } from '../redux/admin/actionsAdmin';
 
 
 const mapStateToProps = (state: any):{} => ({
@@ -16,9 +16,5 @@ const mapStateToProps = (state: any):{} => ({
 
 export default connect(
     mapStateToProps,
-    dispatch=>({
-        queryServer: ()=>{
-            dispatch({type: AdminProc.DO_ADMIN})
-        }
-    })
+    { queryServer }
 )(AdminHome);

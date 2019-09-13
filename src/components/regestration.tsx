@@ -1,6 +1,13 @@
 import React from 'react';
-import { RegistrationState } from '../redux/regestration/actions';
 import { Redirect } from 'react-router-dom';
+
+interface RegistrationState{
+    firstname: string,
+    secondname: string,
+    email: string,
+    password: string,
+    imageProfile: string
+} 
 
 const defaultImageProfile:string = 'images/users.svg';
 
